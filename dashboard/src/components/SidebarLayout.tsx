@@ -1,26 +1,37 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
+import { IconType } from "react-icons";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
-import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
-import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
+import { AiOutlineUser } from "react-icons/ai";
+import { FiMessageSquare } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
-  const menus = [
-    { name: "dashboard", link: "/", icon: MdOutlineDashboard },
-    { name: "user", link: "/", icon: AiOutlineUser },
-    { name: "messages", link: "/", icon: FiMessageSquare },
-    { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
-    { name: "File Manager", link: "/", icon: FiFolder },
-    { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
+import Navbar from "./Navbar";
+
+export type MenuItem = {
+  name: string;
+  link: string;
+  icon: IconType;
+  margin?: boolean;
+};
+
+type Props = {
+  children: ReactNode;
+};
+
+const Sidebar = ({ children }: Props) => {
+  const menus: MenuItem[] = [
+    { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
+    { name: "Students", link: "/", icon: AiOutlineUser },
+    { name: "Profile", link: "/", icon: FiMessageSquare },
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
-  const [open, setOpen] = useState(true);
+
+  const [open, setOpen] = useState<boolean>(true);
+
   return (
-    <section className="flex gap-6">
+    <section className="flex gap-0">
       <div
         className={`bg-[#0e0e0e] min-h-screen ${
           open ? "w-72" : "w-16"
@@ -64,8 +75,9 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
-      <div className="m-3 text-xl text-gray-900 font-semibold">
-        REACT TAILWIND
+      <div className="m-0 w-[100%]">
+        <Navbar />
+        <div className="m-2">{children}</div>
       </div>
     </section>
   );

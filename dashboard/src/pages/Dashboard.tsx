@@ -1,16 +1,16 @@
 import React from "react";
 
 // Components
-import SideBar from '../components/sidebar';
-import NavBar from '../components/navbar';
+import SideBarLayout from "../components/SidebarLayout";
 
 const Dashboard = () => {
-  return <div>
-    <NavBar/>
-    <SideBar/>
-
-  </div>;
-
+  return (
+    <div>
+      <SideBarLayout>
+        <h1>Ahmad</h1>
+      </SideBarLayout>
+    </div>
+  );
 };
 
 export default Dashboard;
