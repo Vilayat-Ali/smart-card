@@ -1,0 +1,3 @@
+{
+  "rust-analyzer.linkedProjects": ["./arduino/Cargo.toml"]
+}
